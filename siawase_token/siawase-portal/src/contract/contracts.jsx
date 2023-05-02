@@ -1,5 +1,5 @@
 import token_contract from "./token_abi.json";
-import {token_address } from "./config"
+import { token_address } from "./config"
 import { BigNumber, ethers } from "ethers";
 import { parseUnits, shallowCopy } from 'ethers/lib/utils';
 import { useEffect } from 'react';
@@ -43,14 +43,15 @@ class Contracts {
     }
 
     async mint_nft() {
-        const account=this.get_account();
+        const account = this.get_account();
         await Token_Contract.mint(account);
     }
 
     async get_owned_tokens(address) {
-       let res=Token_Contract.getOwnedTokens(address);
-        console.log(res);
-        return res;
+        return Token_Contract.getOwnedTokens(address);
+    }
+    async get_tokenURI(tokenId) {
+        return Token_Contract.tokenURI(tokenId);
     }
 
 }
