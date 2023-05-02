@@ -1,4 +1,4 @@
 
-const token_address="0x3872813914A06BB13D44f5a8b610F64735DdA048";
+const token_address="0xedaD310fb14808e63F312E369b319adD355d3f90";
 
 export {token_address };
