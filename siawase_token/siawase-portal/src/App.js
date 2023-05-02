@@ -5,6 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contracts, { Contracts_MetaMask } from "./contract/contracts";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//ページのimport
+
+import Mint_page from "./pages/mint/main";
+
 function App() {
   const cont = new Contracts();
 
@@ -18,7 +22,9 @@ function App() {
         <div >
           <BrowserRouter>
             
-            
+            <Routes>
+              <Route path={'/mint'} element={<Mint_page url={'login'} cont={cont}/>}  />
+            </Routes>
           </BrowserRouter>
         </div>
 

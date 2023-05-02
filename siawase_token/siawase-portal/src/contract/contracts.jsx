@@ -22,6 +22,32 @@ class Contracts {
         return chainId["chainId"];
 
     }
+    async get_account() {
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+        return accounts[0];
+    }
+    async change_network() {
+        const networkParam = {
+            chainId: '0x13466',
+            chainName: 'fujihalab chain',
+            nativeCurrency: { name: 'Fuji', symbol: 'FUJI', decimals: 18 },
+            rpcUrls: ['https://ik1-206-76848.vs.sakura.ne.jp'],
+            blockExplorerUrls: ['https://mumbai.polygonscan.com/'],
+        };
+        await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [networkParam],
+        });
+        window.location.reload();
+
+    }
+
+    async mint_nft() {
+        const account=this.get_account();
+        await Token_Contract.mint(account);
+
+    }
+
 }
 
 export default Contracts;
