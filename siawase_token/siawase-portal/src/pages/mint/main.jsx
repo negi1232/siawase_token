@@ -10,7 +10,7 @@ function Mint_page(props) {
         <div>
             <h1>幸せトークン</h1>
             <Button variant="primary" onClick={() =>props.cont.mint_nft()} style={{ marginTop: '20px' }}>
-                            クイズを作成
+                            NFTを生成
                         </Button>
         </div>
     )
