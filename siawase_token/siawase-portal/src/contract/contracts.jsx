@@ -3,7 +3,6 @@ import { token_address } from "./config"
 import { BigNumber, ethers } from "ethers";
 import { parseUnits, shallowCopy } from 'ethers/lib/utils';
 import { useEffect } from 'react';
-
 const { ethereum } = window;
 
 
@@ -14,7 +13,10 @@ const token_abi = token_contract.abi;
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 const Token_Contract = new ethers.Contract(token_address, token_abi, signer);
+const listener =null;
+const transfer_filters = Token_Contract.filters["Transfer"];
 class Contracts {
+    
     async get_chain_id() {
 
         const chainId = await provider.getNetwork();
@@ -51,9 +53,52 @@ class Contracts {
         return Token_Contract.getOwnedTokens(address);
     }
     async get_tokenURI(tokenId) {
+        console.log(tokenId)
         return Token_Contract.tokenURI(tokenId);
     }
+    async transfer(to, tokenId) {
+        const account = await this.get_account();
+        await Token_Contract.transferFrom(account, to, tokenId);
+    }
+
+    async event_transfer(pattern) {
+        const account = await this.get_account();
+        
+        
+        // リスナーの設定
+        provider.once(transfer_filters(account), (from, to, tokenId, event) => {
+          console.log("hit")
+          console.log(account, from, to, tokenId, event);
+          window.location.reload();
+        });
+        
+       
+    }
+
+    async stop_event_transfer(){
+        console.log(listener);
+        const account = await this.get_account();
+        // Token_Contract.off(transfer_filters(account), listener);
+        //console.log("remove_wafafawflaknfpakwn");
+        // let a=provider.off(transfer_filters(account), (from, to, tokenId, event) => {
+        //     console.log("hit")
+        //     console.log(account, from, to, tokenId, event);
+        //     window.location.reload();
+        //   });
+        
+        //   console.log(a);
+        //   console.log(provider)
+        console.log(provider.off(transfer_filters(account)));
+        console.log(provider.listeners(transfer_filters(account)));
+
+    }
+
+    
+
+
+
 
 }
+
 
 export default Contracts;
