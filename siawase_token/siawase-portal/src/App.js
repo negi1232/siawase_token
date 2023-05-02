@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //ページのimport
 
 import Mint_page from "./pages/mint/main";
+import Owned_tokens_page from "./pages/owned_tokens/main";
 
 function App() {
   const cont = new Contracts();
@@ -23,8 +24,13 @@ function App() {
           <BrowserRouter>
             
             <Routes>
-              <Route path={'/mint'} element={<Mint_page url={'login'} cont={cont}/>}  />
+              <Route path={'/mint'} element={<Mint_page url={'mint'} cont={cont}/>}  />
             </Routes>
+            <Routes>
+              <Route path={'/owned_token/:address'} element={<Owned_tokens_page url={'owned_token'} cont={cont}/>}  />
+            </Routes>
+            
+            
           </BrowserRouter>
         </div>
 
