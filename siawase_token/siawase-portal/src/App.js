@@ -21,7 +21,7 @@ function App() {
 
       <body>
         <div >
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             
             <Routes>
               <Route path={'/mint'} element={<Mint_page url={'mint'} cont={cont}/>}  />

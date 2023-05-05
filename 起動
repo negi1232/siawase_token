@@ -1,0 +1,9 @@
+docker-compose build
+docker-compose run --rm react-app sh -c "npm install -g create-react-app && create-react-app siawase-portal"
+docker-compose run --rm react-app sh -c "cd siawase-portal && npm i ethers@5.7.2 && npm install react-router-dom && npm install react-responsive && npm install react-bootstrap bootstrap && npm install react-icons --save && npm install react-bootstrap-range-slider && npm install react-select && npm install react-bootstrap-counter --save && npm install discord.js && nom install url && npm install sqlite3&& npm install"
+docker-compose run --rm react-app sh -c "cd siawase-portal && npm install axios && npm install @uiw/react-md-editor "
+docker-compose run --rm react-app sh -c "cd siawase-portal && npm i html-react-parser && npm i marked && npm i react-markdown && npm i --save web3modal  && npm i react-datetime moment react-moment react-datepicker redux react-redux @reduxjs/toolkit"
+docker-compose run --rm react-app sh -c "cd siawase-portal && npm install gh-pages --save-dev"
+docker-compose up
+
+docker-compose run --rm react-app sh -c "cd siawase-portal && npm run build"
