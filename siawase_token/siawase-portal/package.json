@@ -2,6 +2,7 @@
   "name": "siawase-portal",
   "homepage": "https://negi1232.github.io/siawase_token",
   "version": "0.1.0",
+  "homepage": "https://negi1232.github.io/siawase_token",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",

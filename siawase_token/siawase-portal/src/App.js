@@ -23,7 +23,7 @@ function App() {
         <div >
           <BrowserRouter basename={process.env.PUBLIC_URL}>
             
-            <Routes>
+            <Routes  basename={process.env.PUBLIC_URL}>
               <Route path={'/mint'} element={<Mint_page url={'mint'} cont={cont}/>}  />
             </Routes>
             <Routes>
