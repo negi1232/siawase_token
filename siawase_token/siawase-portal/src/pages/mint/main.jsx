@@ -6,12 +6,12 @@ import Button from 'react-bootstrap/Button';
 
 function Mint_page(props) {
 
-    return(
+    return (
         <div>
             <h1>幸せトークン</h1>
-            <Button variant="primary" onClick={() =>props.cont.mint_nft()} style={{ marginTop: '20px' }}>
-                            NFTを生成
-                        </Button>
+            <Button variant="primary" onClick={() => props.cont.mint_nft()} style={{ marginTop: '20px' }}>
+                NFTを生成
+            </Button>
         </div>
     )
 }
